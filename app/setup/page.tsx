@@ -59,7 +59,7 @@ export default function SetupPage() {
         </div>
 
         {saved ? (
-          <p style={{ marginTop: '1rem', color: 'var(--accent)' }}>
+          <p style={{ marginTop: '1rem', color: 'var(--success)' }}>
             Defaults saved for this session. Add{' '}
             <code>bundle-cop-vercel-plugin</code> via{' '}
             <code>adapterPath</code> in next.config, then deploy. See{' '}

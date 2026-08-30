@@ -13,9 +13,10 @@
     "typecheck": "pnpm -r typecheck"
   },
   "dependencies": {
-    "bundle-cop-vercel-plugin": "workspace:*",
     "@vercel/blob": "^2.8.0",
     "@vercel/config": "^0.0.18",
+    "bundle-cop-vercel-plugin": "workspace:*",
+    "geist": "^1.7.2",
     "next": "^16.3.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

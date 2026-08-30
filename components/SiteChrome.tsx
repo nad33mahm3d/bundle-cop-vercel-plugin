@@ -2,7 +2,7 @@ import Image from 'next/image'
 import type { ReactNode } from 'react'
 import { GITHUB_URL, NPM_URL } from '@/lib/site'
 
-function BrandMark({ size = 28 }: { size?: number }) {
+function BrandMark({ size = 22 }: { size?: number }) {
   return (
     <Image
       src="/logo.jpg"
@@ -18,18 +18,30 @@ function BrandMark({ size = 28 }: { size?: number }) {
 export function SiteNav() {
   return (
     <header className="site-header">
-      <a className="logo-mark" href="/" aria-label="Bundle Cop home">
-        <BrandMark />
-        <span>Bundle Cop</span>
-      </a>
-      <nav className="nav" aria-label="Primary">
-        <a href="/docs">Docs</a>
-        <a href="/setup">Setup</a>
-        <a href="/dashboard">Dashboard</a>
-        <a href={GITHUB_URL} target="_blank" rel="noreferrer">
-          GitHub
+      <div className="site-header-inner">
+        <a className="logo-mark" href="/" aria-label="Bundle Cop home">
+          <BrandMark />
+          <span>Bundle Cop</span>
         </a>
-      </nav>
+        <nav className="nav" aria-label="Primary">
+          <a href="/docs">Docs</a>
+          <a href="/setup">Setup</a>
+          <a href="/dashboard">Dashboard</a>
+        </nav>
+        <div className="header-actions">
+          <a
+            className="btn btn-ghost btn-sm"
+            href={GITHUB_URL}
+            target="_blank"
+            rel="noreferrer"
+          >
+            GitHub
+          </a>
+          <a className="btn btn-primary btn-sm" href="/docs">
+            Get Started
+          </a>
+        </div>
+      </div>
     </header>
   )
 }
@@ -37,42 +49,30 @@ export function SiteNav() {
 export function SiteFooter() {
   return (
     <footer className="site-footer">
-      <div className="site-footer-brand">
-        <span className="logo-mark footer-mark">
-          <BrandMark size={24} />
-          <span>Bundle Cop</span>
-        </span>
-        <p>Prevent silent bundle growth on Next.js + Vercel.</p>
+      <div className="site-footer-inner">
+        <div className="site-footer-top">
+          <a className="logo-mark" href="/">
+            <BrandMark size={20} />
+            <span>Bundle Cop</span>
+          </a>
+          <div className="site-footer-links">
+            <a href="/docs">Docs</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/eula">EULA</a>
+            <a href="/llms.txt">llms.txt</a>
+            <a href={GITHUB_URL} target="_blank" rel="noreferrer">
+              GitHub
+            </a>
+            <a href={NPM_URL} target="_blank" rel="noreferrer">
+              npm
+            </a>
+          </div>
+        </div>
+        <p className="site-footer-meta">
+          © {new Date().getFullYear()} Bundle Cop. MIT License. Built for the
+          Vercel ecosystem.
+        </p>
       </div>
-      <div className="site-footer-cols">
-        <div>
-          <h3>Product</h3>
-          <a href="/docs">Docs</a>
-          <a href="/setup">Setup</a>
-          <a href="/dashboard">Dashboard</a>
-        </div>
-        <div>
-          <h3>Legal</h3>
-          <a href="/privacy">Privacy</a>
-          <a href="/eula">EULA</a>
-          <a href="/llms.txt">llms.txt</a>
-        </div>
-        <div>
-          <h3>Open source</h3>
-          <a href={GITHUB_URL} target="_blank" rel="noreferrer">
-            GitHub
-          </a>
-          <a href={NPM_URL} target="_blank" rel="noreferrer">
-            npm
-          </a>
-          <a href={`${GITHUB_URL}/releases`} target="_blank" rel="noreferrer">
-            Releases
-          </a>
-        </div>
-      </div>
-      <p className="site-footer-meta">
-        © {new Date().getFullYear()} Bundle Cop · MIT License
-      </p>
     </footer>
   )
 }

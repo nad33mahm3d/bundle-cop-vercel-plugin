@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
-import { DM_Sans, Syne } from 'next/font/google'
+import { GeistMono } from 'geist/font/mono'
+import { GeistSans } from 'geist/font/sans'
 import {
   GITHUB_URL,
   SITE_DESCRIPTION,
@@ -7,18 +8,6 @@ import {
   SITE_URL,
 } from '@/lib/site'
 import './globals.css'
-
-const display = Syne({
-  subsets: ['latin'],
-  variable: '--font-syne',
-  weight: ['600', '700', '800'],
-})
-
-const body = DM_Sans({
-  subsets: ['latin'],
-  variable: '--font-dm',
-  weight: ['400', '500', '600', '700'],
-})
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -93,7 +82,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${display.variable} ${body.variable}`}>
+    <html
+      lang="en"
+      className={`${GeistSans.variable} ${GeistMono.variable}`}
+    >
       <body>
         <script
           type="application/ld+json"
