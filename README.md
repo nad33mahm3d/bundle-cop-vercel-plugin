@@ -1,27 +1,43 @@
 # Bundle Cop
 
-Prevent Next.js bundle regressions on Vercel. Attribute cost to the importing file, enforce budgets, and report via Vercel Checks + GitHub.
+[![npm version](https://img.shields.io/npm/v/bundle-cop-vercel-plugin.svg)](https://www.npmjs.com/package/bundle-cop-vercel-plugin)
+[![npm downloads](https://img.shields.io/npm/dm/bundle-cop-vercel-plugin.svg)](https://www.npmjs.com/package/bundle-cop-vercel-plugin)
+[![CI publish](https://github.com/nad33mahm3d/bundle-cop-vercel-plugin/actions/workflows/publish-npm.yml/badge.svg)](https://github.com/nad33mahm3d/bundle-cop-vercel-plugin/actions/workflows/publish-npm.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 
-**Repository:** [nad33mahm3d/bundle-cop-vercel-plugin](https://github.com/nad33mahm3d/bundle-cop-vercel-plugin)
+Prevent Next.js bundle regressions on Vercel. Attribute cost to the importing file, enforce budgets at build time, and report on deployments.
+
+| Resource | Link |
+|----------|------|
+| **GitHub** | [nad33mahm3d/bundle-cop-vercel-plugin](https://github.com/nad33mahm3d/bundle-cop-vercel-plugin) |
+| **npm** | [bundle-cop-vercel-plugin](https://www.npmjs.com/package/bundle-cop-vercel-plugin) |
+| **Live integration app** | [bundle-cop.vercel.app](https://bundle-cop.vercel.app) |
+| **Changelog** | [CHANGELOG.md](./CHANGELOG.md) |
+| **Issues** | [GitHub Issues](https://github.com/nad33mahm3d/bundle-cop-vercel-plugin/issues) |
+| **Releases** | [GitHub Releases](https://github.com/nad33mahm3d/bundle-cop-vercel-plugin/releases) |
+
+## Why Bundle Cop
+
+Bundles grow silently — teams add `moment`, `lodash`, or heavy charts and only notice when LCP drops or bandwidth bills spike. Bundle Cop runs in the Next.js build, points at the **culprit file**, and can fail the build when budgets are exceeded.
 
 ## Packages
 
-| Path | Package | Role |
-|------|---------|------|
-| `packages/vercel-plugin` | `bundle-cop-vercel-plugin` | Next.js Adapter (`modifyConfig` + `onBuildComplete`) |
-| `.` (root) | `bundle-cop` | Marketplace integration app (setup, dashboard, webhooks) |
-| `example` | `@bundle-cop/example` | Demo Next app that imports `moment` |
+| Path | Package / app | Role |
+|------|---------------|------|
+| [`packages/vercel-plugin`](./packages/vercel-plugin) | [`bundle-cop-vercel-plugin`](https://www.npmjs.com/package/bundle-cop-vercel-plugin) | Next.js Adapter (`modifyConfig` + `onBuildComplete`) |
+| Repo root | Integration app | Setup UI, dashboard, Vercel webhooks + Checks |
+| [`example`](./example) | Demo Next app | Imports `moment` to verify attribution |
 
-## Quick start
+## Quick start (adapter)
 
-Published adapter: [`bundle-cop-vercel-plugin`](https://www.npmjs.com/package/bundle-cop-vercel-plugin)
+Requires **Next.js 16+**.
 
 ```bash
 pnpm add bundle-cop-vercel-plugin
 ```
 
 ```ts
-// next.config.ts — requires Next.js 16+
+// next.config.ts
 import type { NextConfig } from 'next'
 import { createRequire } from 'node:module'
 
@@ -34,63 +50,101 @@ const nextConfig: NextConfig = {
 export default nextConfig
 ```
 
-Optional project config — copy [`bundle-cop.config.example.json`](./bundle-cop.config.example.json) to `bundle-cop.config.json`.
+Optional budgets — copy [`bundle-cop.config.example.json`](./bundle-cop.config.example.json) to `bundle-cop.config.json`:
+
+```json
+{
+  "budgets": [
+    { "path": "/*", "maxSize": "250kb", "enforce": "warn" }
+  ],
+  "suggestions": true
+}
+```
+
+After `next build`, inspect `bundle-report.json` in the project root.
+
+### Prove it locally
+
+```bash
+pnpm install
+pnpm build:plugin
+pnpm --filter @bundle-cop/example build
+# → example/bundle-report.json (moment attributed to app/page.tsx)
+```
 
 ## Integration app
 
+Hosted at [bundle-cop.vercel.app](https://bundle-cop.vercel.app) (Vercel team **NadeemAhmedPersonal**).
+
 ```bash
+pnpm install
+pnpm build:plugin
 pnpm dev
 ```
 
-- `/` — landing
-- `/setup` — default budgets / fail-on-over-budget
-- `/dashboard` — history chart from private Blob reports
-- `POST /api/webhooks/vercel` — deployment webhook → Checks + GitHub
-- `GET /api/reports/[sha]` — fetch a report by commit SHA
+| Route | Purpose |
+|-------|---------|
+| `/` | Product landing |
+| `/setup` | Default budgets / fail-on-over-budget guidance |
+| `/dashboard` | Bundle history chart (private Blob reports) |
+| `POST /api/webhooks/vercel` | Deployment webhook → Checks (+ optional GitHub) |
+| `GET /api/reports/[sha]` | Fetch a report by commit SHA |
 
-### Bootstrap
+### Environment
 
-Hosted on **NadeemAhmedPersonal** (`eboxnadeem-3937`):
+Copy [`.env.example`](./.env.example) → `.env.local` (or `vercel env pull`):
 
-- App: https://bundle-cop.vercel.app
+| Variable | Required | Purpose |
+|----------|----------|---------|
+| `BLOB_READ_WRITE_TOKEN` | For Blob upload / dashboard | Private Blob read/write |
+| `VERCEL_WEBHOOK_SECRET` | For webhooks | Verify Vercel webhook signatures |
+| `VERCEL_TOKEN` | For Checks / prod diffs | Deployments + Checks API |
+| `GITHUB_APP_ID` / `GITHUB_APP_PRIVATE_KEY` / `GITHUB_APP_INSTALLATION_ID` | Optional | GitHub Check Runs |
+| `GITHUB_REPOSITORY` | Optional | `owner/repo` for Check Runs |
+
+### Hosting bootstrap (already done for the public demo)
+
 - Project: `nadeem-ahmeds-projects-9ef48543/bundle-cop`
-- Private Blob: `bundle-cop-reports`
+- Private Blob store: `bundle-cop-reports`
 - Webhook: `deployment.succeeded` → `/api/webhooks/vercel`
 
-Still needed for Checks diffs:
+## Publishing to npm
 
-1. **`VERCEL_TOKEN`** — https://vercel.com/account/tokens then `vercel env add VERCEL_TOKEN …` and redeploy
-2. **GitHub App** (optional) — `GITHUB_APP_*` + `GITHUB_REPOSITORY`
-3. **Marketplace Integration Console** (Phase C) — see `integration.json`
+Package name: **`bundle-cop-vercel-plugin`**
 
-## Environment
+| Version | How |
+|---------|-----|
+| `0.1.0` | Manual first publish |
+| `0.1.1+` | GitHub Release → [`.github/workflows/publish-npm.yml`](./.github/workflows/publish-npm.yml) |
 
-Copy `.env.example` → `.env.local` (or `vercel env pull`):
+**To ship a new version:**
 
-| Variable | Purpose |
-|----------|---------|
-| `BLOB_READ_WRITE_TOKEN` | Private Blob read/write for reports |
-| `VERCEL_TOKEN` | Deployments + Checks API |
-| `VERCEL_WEBHOOK_SECRET` | Verify webhook signatures |
-| `GITHUB_APP_ID` / `GITHUB_APP_PRIVATE_KEY` / `GITHUB_APP_INSTALLATION_ID` | Optional GitHub Check Runs |
-| `GITHUB_REPOSITORY` | `owner/repo` for Check Runs |
+1. Ensure repo secret **`NPM_TOKEN`** is set (Settings → Secrets → Actions)
+2. Create a GitHub Release with tag `vX.Y.Z` (e.g. `v0.1.2`)
+3. CI bumps the package version from the tag and runs `npm publish --access public`
 
-Bootstrap: `vercel link` → provision Blob → `vercel env pull --yes`.
+npm metadata (`repository`, `bugs`, `homepage`, `license`) points at this GitHub repo so the package page links back to source.
 
-## Publishing the npm package
+## Marketplace (Phase C — pending)
 
-`bundle-cop-vercel-plugin@0.1.0` is already on npm (manual publish).
+Draft scopes and hooks live in [`integration.json`](./integration.json). Next step: create a **Connectable Account Integration** in the Vercel Integrations Console using:
 
-Automated publishes run on **GitHub Release** via [`.github/workflows/publish-npm.yml`](.github/workflows/publish-npm.yml):
+- Redirect URL: `https://bundle-cop.vercel.app/setup`
+- Webhook URL: `https://bundle-cop.vercel.app/api/webhooks/vercel`
+- Configuration URL: `https://bundle-cop.vercel.app/dashboard`
 
-1. Add repo secret **`NPM_TOKEN`** (npm granular token with publish; prefer bypass-2FA for automation)
-2. Create a release tagged **`v0.1.1`** (or higher — do not reuse `v0.1.0`)
-3. CI sets the package version from the tag and runs `npm publish`
+## Development
 
-## Marketplace
+```bash
+pnpm install
+pnpm build:plugin   # build adapter
+pnpm typecheck
+pnpm build          # adapter + integration app
+pnpm --filter @bundle-cop/example build
+```
 
-See [`integration.json`](./integration.json) for the draft Integration Console manifest (`deployment`, `deployment-check`, `project`, `project-env-vars`).
+Monorepo: pnpm workspaces (`packages/*`, `example`).
 
 ## License
 
-MIT
+[MIT](./LICENSE)

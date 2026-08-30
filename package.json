@@ -31,6 +31,11 @@
     "node": ">=20"
   },
   "packageManager": "pnpm@10.6.5",
+  "author": {
+    "name": "Nadeem Ahmed",
+    "url": "https://github.com/nad33mahm3d"
+  },
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nad33mahm3d/bundle-cop-vercel-plugin.git"
