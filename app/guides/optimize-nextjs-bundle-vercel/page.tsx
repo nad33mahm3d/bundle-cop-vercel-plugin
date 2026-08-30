@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: '/guides/optimize-nextjs-bundle-vercel' },
   openGraph: {
-    title: 'Optimize Next.js Bundle Size on Vercel · Bundle Cop',
+    title: 'Optimize Next.js Bundle Size on Vercel | Bundle Cop',
     description:
       'How to find and fix silent Next.js bundle growth on Vercel deployments.',
     url: `${SITE_URL}/guides/optimize-nextjs-bundle-vercel`,

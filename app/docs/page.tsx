@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { SiteShell } from '@/components/SiteChrome'
 
 export const metadata: Metadata = {
-  title: 'Docs — Install & configure Next.js bundle optimization',
+  title: 'Docs | Install & configure Next.js bundle optimization',
   description:
     'Install Bundle Cop on Next.js, configure bundle budgets, and wire the Vercel integration for deploy-time optimization reports.',
   alternates: { canonical: '/docs' },

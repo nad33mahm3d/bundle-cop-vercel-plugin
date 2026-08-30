@@ -6,7 +6,7 @@ export const SITE_DESCRIPTION =
   'Optimize Next.js bundle size on Vercel. Bundle Cop catches regressions before production, attributes cost to the importing file, enforces budgets, and reports on every deploy.'
 
 export const SITE_TITLE =
-  'Bundle Cop — Optimize Next.js Bundle Size on Vercel'
+  'Bundle Cop | Optimize Next.js Bundle Size on Vercel'
 
 export const GITHUB_URL =
   'https://github.com/nad33mahm3d/bundle-cop-vercel-plugin'
