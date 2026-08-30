@@ -9,12 +9,13 @@ Next.js **adapter** that attributes client bundle cost to the importing source f
 
 | | |
 |---|---|
+| **Docs** | [bundle-cop.vercel.app/docs](https://bundle-cop.vercel.app/docs) |
 | **npm** | [bundle-cop-vercel-plugin](https://www.npmjs.com/package/bundle-cop-vercel-plugin) |
 | **Source** | [nad33mahm3d/bundle-cop-vercel-plugin](https://github.com/nad33mahm3d/bundle-cop-vercel-plugin) (`packages/vercel-plugin`) |
 | **Changelog** | [CHANGELOG.md](https://github.com/nad33mahm3d/bundle-cop-vercel-plugin/blob/main/CHANGELOG.md) |
 | **Issues** | [GitHub Issues](https://github.com/nad33mahm3d/bundle-cop-vercel-plugin/issues) |
 
-Part of the [Bundle Cop](https://github.com/nad33mahm3d/bundle-cop-vercel-plugin) monorepo (adapter + Vercel integration app).
+Part of [Bundle Cop](https://bundle-cop.vercel.app) (adapter + Vercel integration app).
 
 ## Requirements
 

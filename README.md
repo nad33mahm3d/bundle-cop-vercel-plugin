@@ -86,13 +86,23 @@ Package name: **`bundle-cop-vercel-plugin`**
 | `0.1.0` | Manual first publish |
 | `0.1.1+` | GitHub Release → [`.github/workflows/publish-npm.yml`](./.github/workflows/publish-npm.yml) |
 
-**To ship a new version:**
+**Current npm:** [`bundle-cop-vercel-plugin@0.1.3`](https://www.npmjs.com/package/bundle-cop-vercel-plugin) (homepage → website docs)
 
-1. Ensure repo secret **`NPM_TOKEN`** is set (Settings → Secrets → Actions)
-2. Create a GitHub Release with tag `vX.Y.Z` (e.g. `v0.1.2`)
-3. CI bumps the package version from the tag and runs `npm publish --access public`
+### Google Search Console
 
-npm metadata (`repository`, `bugs`, `homepage`, `license`) points at this GitHub repo so the package page links back to source.
+1. Add property `https://bundle-cop.vercel.app` in [Search Console](https://search.google.com/search-console)
+2. Verify ownership
+3. Submit sitemap: `https://bundle-cop.vercel.app/sitemap.xml`
+
+### `VERCEL_TOKEN` fallback (optional)
+
+For Checks when no OAuth install token is stored:
+
+1. Create a token at [vercel.com/account/tokens](https://vercel.com/account/tokens) (scope to team/project as needed)
+2. `vercel env add VERCEL_TOKEN production` (and preview if desired)
+3. Redeploy
+
+OAuth install tokens from Phase D still take priority when present.
 
 ## Marketplace (Phase D — OAuth)
 

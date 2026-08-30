@@ -1,6 +1,6 @@
 {
   "name": "bundle-cop-vercel-plugin",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Next.js adapter that attributes bundle cost to source files and enforces budgets",
   "license": "MIT",
   "author": {
@@ -76,5 +76,5 @@
   "bugs": {
     "url": "https://github.com/nad33mahm3d/bundle-cop-vercel-plugin/issues"
   },
-  "homepage": "https://github.com/nad33mahm3d/bundle-cop-vercel-plugin/tree/main/packages/vercel-plugin#readme"
+  "homepage": "https://bundle-cop.vercel.app/docs"
 }

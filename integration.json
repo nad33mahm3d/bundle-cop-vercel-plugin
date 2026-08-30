@@ -9,8 +9,7 @@
   "scopes": [
     "deployment",
     "deployment-check",
-    "project",
-    "project-env-vars"
+    "project"
   ],
   "hooks": ["deployment.ready", "deployment.succeeded", "project.created"],
   "buildPlugins": ["bundle-cop-vercel-plugin"],
