@@ -1,0 +1,70 @@
+{
+  "name": "bundle-cop-vercel-plugin",
+  "version": "0.1.0",
+  "description": "Next.js adapter that attributes bundle cost to source files and enforces budgets",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.js"
+    },
+    "./adapter": {
+      "types": "./dist/index.d.ts",
+      "require": "./next-adapter.cjs",
+      "import": "./next-adapter.cjs",
+      "default": "./next-adapter.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "next-adapter.cjs",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts --clean",
+    "dev": "tsup src/index.ts --format esm,cjs --dts --watch",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "pnpm run build"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "peerDependencies": {
+    "next": ">=15"
+  },
+  "dependencies": {
+    "@vercel/blob": "^2.8.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "next": "^16.3.3",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "nextjs",
+    "vercel",
+    "bundle",
+    "webpack",
+    "turbopack",
+    "adapter",
+    "budget"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nad33mahm3d/bundle-cop-vercel-plugin.git",
+    "directory": "packages/vercel-plugin"
+  },
+  "bugs": {
+    "url": "https://github.com/nad33mahm3d/bundle-cop-vercel-plugin/issues"
+  },
+  "homepage": "https://github.com/nad33mahm3d/bundle-cop-vercel-plugin#readme"
+}

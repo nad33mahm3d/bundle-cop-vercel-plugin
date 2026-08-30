@@ -1,0 +1,9 @@
+{
+  "budgets": [
+    { "path": "/*", "maxSize": "250kb", "enforce": "warn" },
+    { "path": "/dashboard", "maxSize": "400kb", "enforce": "error" }
+  ],
+  "ignore": ["node_modules/**/locales/**"],
+  "githubComment": true,
+  "suggestions": true
+}

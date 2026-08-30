@@ -1,0 +1,18 @@
+{
+  "slug": "bundle-cop",
+  "name": "Bundle Cop",
+  "description": "Prevent bundle regressions. Attribute cost to files and enforce budgets.",
+  "supportEmail": "support@bundle-cop.dev",
+  "scopes": [
+    "deployment",
+    "deployment-check",
+    "project",
+    "project-env-vars"
+  ],
+  "hooks": ["deployment.ready", "deployment.succeeded", "project.created"],
+  "buildPlugins": ["bundle-cop-vercel-plugin"],
+  "uiHooks": [
+    { "path": "/setup", "type": "setup" },
+    { "path": "/dashboard", "type": "dashboard" }
+  ]
+}

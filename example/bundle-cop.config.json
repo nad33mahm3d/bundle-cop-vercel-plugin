@@ -1,0 +1,7 @@
+{
+  "budgets": [
+    { "path": "/*", "maxSize": "2mb", "enforce": "warn" }
+  ],
+  "suggestions": true,
+  "githubComment": true
+}
