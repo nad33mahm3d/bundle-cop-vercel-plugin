@@ -1,10 +1,19 @@
 # Bundle Cop
 
-> Catch Next.js bundle regressions before they hit production. Attribute cost to the importing file, enforce budgets, and report on every Vercel deployment.
+> Optimize Next.js bundle size on Vercel. Catch regressions before production, attribute cost to the importing file, enforce budgets, and report on every deploy.
+
+## Primary intents this site serves
+
+- optimize Next.js bundle size on Vercel
+- reduce Next.js client JS / improve LCP on Vercel
+- enforce Next.js bundle budgets in CI
+- find which file imported a heavy dependency (moment, lodash, charts)
+- webpack-bundle-analyzer alternative for Vercel deployments
 
 ## Site
 
 - Home: https://bundle-cop.vercel.app/
+- Guide (intent page): https://bundle-cop.vercel.app/guides/optimize-nextjs-bundle-vercel
 - Docs: https://bundle-cop.vercel.app/docs
 - Setup: https://bundle-cop.vercel.app/setup
 - Dashboard: https://bundle-cop.vercel.app/dashboard
@@ -30,5 +39,6 @@ In `next.config.ts` set `adapterPath` to `bundle-cop-vercel-plugin/adapter` via 
 
 ## Optional
 
-- Full prose docs for humans: /docs
+- Full prose docs: /docs
+- Optimization guide: /guides/optimize-nextjs-bundle-vercel
 - llms-full.txt: /llms-full.txt

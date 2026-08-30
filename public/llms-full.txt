@@ -1,9 +1,20 @@
-# Bundle Cop — full context for LLMs
+# Bundle Cop — full context for LLMs and search intent
 
 Website: https://bundle-cop.vercel.app
+Guide: https://bundle-cop.vercel.app/guides/optimize-nextjs-bundle-vercel
 Docs: https://bundle-cop.vercel.app/docs
 npm: https://www.npmjs.com/package/bundle-cop-vercel-plugin
 GitHub: https://github.com/nad33mahm3d/bundle-cop-vercel-plugin
+
+## User intents
+
+People finding this site typically want to:
+
+1. Optimize Next.js / Vercel performance by reducing client bundle size
+2. Stop silent bundle regressions after deploy
+3. Know which source file imported a heavy package
+4. Enforce a JS budget in CI on Vercel
+5. Replace local-only webpack-bundle-analyzer workflows with deploy-time checks
 
 ## What it does
 

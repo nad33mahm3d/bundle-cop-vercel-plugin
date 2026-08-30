@@ -25,6 +25,7 @@ export function SiteNav() {
         </a>
         <nav className="nav" aria-label="Primary">
           <a href="/docs">Docs</a>
+          <a href="/guides/optimize-nextjs-bundle-vercel">Guide</a>
           <a href="/setup">Setup</a>
           <a href="/dashboard">Dashboard</a>
         </nav>
@@ -57,6 +58,7 @@ export function SiteFooter() {
           </a>
           <div className="site-footer-links">
             <a href="/docs">Docs</a>
+            <a href="/guides/optimize-nextjs-bundle-vercel">Guide</a>
             <a href="/privacy">Privacy</a>
             <a href="/eula">EULA</a>
             <a href="/llms.txt">llms.txt</a>

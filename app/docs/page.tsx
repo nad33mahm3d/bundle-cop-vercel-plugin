@@ -2,9 +2,9 @@ import type { Metadata } from 'next'
 import { SiteShell } from '@/components/SiteChrome'
 
 export const metadata: Metadata = {
-  title: 'Docs',
+  title: 'Docs — Install & configure Next.js bundle optimization',
   description:
-    'Install Bundle Cop, configure budgets, and wire the Vercel integration.',
+    'Install Bundle Cop on Next.js, configure bundle budgets, and wire the Vercel integration for deploy-time optimization reports.',
   alternates: { canonical: '/docs' },
 }
 
@@ -13,8 +13,8 @@ export default function DocsPage() {
     <SiteShell wide>
       <h1 className="brand page-title">Docs</h1>
       <p className="lead">
-        Everything you need to install the adapter, enforce budgets, and run the
-        integration app on Vercel.
+        Install and configure Bundle Cop to optimize Next.js bundle size on
+        Vercel — budgets, attribution, and deploy reports.
       </p>
 
       <nav className="docs-toc panel">
@@ -40,6 +40,11 @@ export default function DocsPage() {
           </li>
           <li>
             <a href="#links">Links</a>
+          </li>
+          <li>
+            <a href="/guides/optimize-nextjs-bundle-vercel">
+              Optimization guide
+            </a>
           </li>
         </ul>
       </nav>

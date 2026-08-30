@@ -3,7 +3,7 @@ import { join } from 'node:path'
 import { ImageResponse } from 'next/og'
 import { SITE_NAME } from '@/lib/site'
 
-export const alt = 'Bundle Cop — prevent Next.js bundle regressions'
+export const alt = 'Bundle Cop — Optimize Next.js bundle size on Vercel'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -56,11 +56,11 @@ export default async function OpenGraphImage() {
                 color: '#fff',
               }}
             >
-              Catch bundle regressions before they ship.
+              Optimize Next.js bundle size on Vercel.
             </div>
             <div style={{ fontSize: 24, color: '#888', maxWidth: 620 }}>
-              Attribute cost to the file. Enforce budgets. Report on every
-              deploy.
+              Attribute cost to the file. Enforce budgets. Catch regressions on
+              every deploy.
             </div>
           </div>
           <div style={{ display: 'flex', fontSize: 20, color: '#666' }}>
