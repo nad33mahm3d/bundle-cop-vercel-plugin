@@ -7,18 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Added
+## [0.1.2] - 2026-08-30
 
-- Phase D: Vercel OAuth install exchange on `/setup`, Blob-backed per-install tokens, Checks/diffs via install token, uninstall cleanup webhook
-- Website documentation at `/docs`, Privacy Policy at `/privacy`, and EULA at `/eula`
-- Shared site nav/footer with GitHub and npm links
-- Vercel project linked to GitHub for production auto-deploy on `main`
-- SEO: `sitemap.xml`, `robots.txt`, `llms.txt`, `llms-full.txt`, Open Graph image, web manifest, JSON-LD
-- Redesigned landing with brand-first hero, report visual, and motion
+### Changed
 
-### Removed
-
-- Internal `Bundle-Cop-Plan.md` from the public repository
+- Refresh npm package metadata: MIT LICENSE in published files, richer README, author / homepage / keywords aligned with GitHub
 
 ## [0.1.1] - 2026-08-30
 
@@ -36,6 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Optional private Vercel Blob upload
 - Integration app (setup, dashboard, webhooks) and example app
 
-[Unreleased]: https://github.com/nad33mahm3d/bundle-cop-vercel-plugin/compare/v0.1.1...HEAD
+[Unreleased]: https://github.com/nad33mahm3d/bundle-cop-vercel-plugin/compare/v0.1.2...HEAD
+[0.1.2]: https://github.com/nad33mahm3d/bundle-cop-vercel-plugin/releases/tag/v0.1.2
 [0.1.1]: https://github.com/nad33mahm3d/bundle-cop-vercel-plugin/releases/tag/v0.1.1
 [0.1.0]: https://github.com/nad33mahm3d/bundle-cop-vercel-plugin/releases/tag/v0.1.0
