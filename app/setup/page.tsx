@@ -1,3 +1,4 @@
+import { getInstallation } from '@/lib/installations'
 import { exchangeCodeForToken } from '@/lib/oauth'
 import { SetupClient } from './SetupClient'
 
@@ -28,10 +29,20 @@ export default async function SetupPage({
       await exchangeCodeForToken({ code, configurationId })
       installed = true
     } catch (error) {
-      installError =
-        error instanceof Error ? error.message : 'Failed to complete OAuth install'
-      console.error('[bundle-cop] OAuth exchange failed:', error)
+      // Code is single-use; refresh may fail even though install already saved
+      const existing = await getInstallation(configurationId)
+      if (existing) {
+        installed = true
+      } else {
+        installError =
+          error instanceof Error
+            ? error.message
+            : 'Failed to complete OAuth install'
+        console.error('[bundle-cop] OAuth exchange failed:', error)
+      }
     }
+  } else if (configurationId) {
+    installed = Boolean(await getInstallation(configurationId))
   }
 
   return (

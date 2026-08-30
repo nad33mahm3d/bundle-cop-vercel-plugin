@@ -205,8 +205,22 @@ pnpm --filter @bundle-cop/example build
               <td>
                 <code>BLOB_READ_WRITE_TOKEN</code>
               </td>
-              <td>Blob / dashboard</td>
-              <td>Private Blob read/write</td>
+              <td>Blob / installs</td>
+              <td>Private Blob for reports + OAuth install tokens</td>
+            </tr>
+            <tr>
+              <td>
+                <code>INTEGRATION_CLIENT_ID</code>
+              </td>
+              <td>Marketplace install</td>
+              <td>OAuth client ID from Integrations Console</td>
+            </tr>
+            <tr>
+              <td>
+                <code>INTEGRATION_CLIENT_SECRET</code>
+              </td>
+              <td>Marketplace install</td>
+              <td>OAuth client secret</td>
             </tr>
             <tr>
               <td>
@@ -219,8 +233,8 @@ pnpm --filter @bundle-cop/example build
               <td>
                 <code>VERCEL_TOKEN</code>
               </td>
-              <td>Checks / diffs</td>
-              <td>Deployments + Checks API</td>
+              <td>Optional fallback</td>
+              <td>Shared token if no per-install OAuth token</td>
             </tr>
             <tr>
               <td>
