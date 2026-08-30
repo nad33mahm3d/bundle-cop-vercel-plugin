@@ -4,11 +4,17 @@ import { formatBytes } from '@/lib/format'
 import { getReportBySha } from '@/lib/reports'
 import { createOrUpdateCheck } from '@/lib/vercel-checks'
 import { postGithubCheck } from '@/lib/github'
+import {
+  deleteInstallation,
+  resolveAccessToken,
+} from '@/lib/installations'
 
 export const runtime = 'nodejs'
 
 type VercelWebhookPayload = {
   type?: string
+  teamId?: string
+  configurationId?: string
   payload?: {
     deployment?: {
       id?: string
@@ -17,7 +23,9 @@ type VercelWebhookPayload = {
       projectId?: string
     }
     project?: { id?: string }
+    configuration?: { id?: string }
     target?: string
+    team?: { id?: string }
   }
 }
 
@@ -29,6 +37,19 @@ export async function POST(request: Request) {
 
   const body = JSON.parse(raw) as VercelWebhookPayload
   const type = body.type || ''
+
+  if (type === 'integration-configuration.removed') {
+    const configurationId =
+      body.configurationId || body.payload?.configuration?.id
+    if (configurationId) {
+      await deleteInstallation(
+        configurationId,
+        body.teamId || body.payload?.team?.id,
+      )
+    }
+    return Response.json({ ok: true, removed: configurationId })
+  }
+
   if (type !== 'deployment.ready' && type !== 'deployment.succeeded') {
     return Response.json({ ok: true, skipped: type })
   }
@@ -36,6 +57,9 @@ export async function POST(request: Request) {
   const deployment = body.payload?.deployment
   const deploymentId = deployment?.id
   const projectId = deployment?.projectId || body.payload?.project?.id
+  const configurationId =
+    body.configurationId || body.payload?.configuration?.id
+  const teamId = body.teamId || body.payload?.team?.id
   const commitSha =
     deployment?.meta?.githubCommitSha ||
     deployment?.meta?.gitlabCommitSha ||
@@ -58,12 +82,14 @@ export async function POST(request: Request) {
     })
   }
 
-  const prod = await fetchProductionReport(projectId)
+  const accessToken = await resolveAccessToken({ configurationId, teamId })
+  const prod = await fetchProductionReport(projectId, accessToken)
   const markdown = buildComment(current, prod)
 
   await createOrUpdateCheck({
     deploymentId,
     projectId,
+    accessToken,
     name: 'Bundle Cop',
     conclusion: budgetFailed(current) ? 'failed' : 'succeeded',
     output: {
@@ -85,7 +111,6 @@ export async function POST(request: Request) {
 function verifySignature(rawBody: string, header: string | null): boolean {
   const secret = process.env.VERCEL_WEBHOOK_SECRET
   if (!secret) {
-    // Allow local/dev without secret; reject in production if unset
     return process.env.NODE_ENV !== 'production'
   }
   if (!header) return false
@@ -99,8 +124,9 @@ function verifySignature(rawBody: string, header: string | null): boolean {
 
 async function fetchProductionReport(
   projectId?: string,
+  accessToken?: string | null,
 ): Promise<BundleReport | null> {
-  const token = process.env.VERCEL_TOKEN
+  const token = accessToken || process.env.VERCEL_TOKEN
   if (!token || !projectId) return null
 
   try {

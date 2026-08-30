@@ -4,6 +4,8 @@ type CheckInput = {
   name: string
   conclusion: 'succeeded' | 'failed' | 'neutral' | 'skipped'
   output: { title: string; summary: string }
+  /** Per-install OAuth token; falls back to VERCEL_TOKEN */
+  accessToken?: string | null
 }
 
 /**
@@ -11,9 +13,11 @@ type CheckInput = {
  * Uses deployment checks when a token is present; no-ops otherwise.
  */
 export async function createOrUpdateCheck(input: CheckInput): Promise<void> {
-  const token = process.env.VERCEL_TOKEN
+  const token = input.accessToken || process.env.VERCEL_TOKEN
   if (!token) {
-    console.warn('[bundle-cop] VERCEL_TOKEN missing — skipping Checks API')
+    console.warn(
+      '[bundle-cop] No access token (install OAuth or VERCEL_TOKEN) — skipping Checks API',
+    )
     return
   }
 

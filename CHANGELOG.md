@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Phase D: Vercel OAuth install exchange on `/setup`, Blob-backed per-install tokens, Checks/diffs via install token, uninstall cleanup webhook
 - Website documentation at `/docs`, Privacy Policy at `/privacy`, and EULA at `/eula`
 - Shared site nav/footer with GitHub and npm links
 - Vercel project linked to GitHub for production auto-deploy on `main`

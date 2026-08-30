@@ -94,14 +94,18 @@ Package name: **`bundle-cop-vercel-plugin`**
 
 npm metadata (`repository`, `bugs`, `homepage`, `license`) points at this GitHub repo so the package page links back to source.
 
-## Marketplace (Phase C — pending)
+## Marketplace (Phase D — OAuth)
 
-Draft scopes and hooks live in [`integration.json`](./integration.json). Console URLs:
+Install flow exchanges `code` on `/setup`, stores the token in private Blob under
+`installations/{configurationId}.json`, redirects to Vercel `next`, and uses that
+token for Checks / prod diffs (falls back to `VERCEL_TOKEN` if unset).
 
 - Redirect: `https://bundle-cop.vercel.app/setup`
 - Webhook: `https://bundle-cop.vercel.app/api/webhooks/vercel`
 - Configuration: `https://bundle-cop.vercel.app/dashboard`
 - Docs / Privacy / EULA: `/docs`, `/privacy`, `/eula` on the same host
+
+Draft scopes live in [`integration.json`](./integration.json).
 
 ## Development
 
