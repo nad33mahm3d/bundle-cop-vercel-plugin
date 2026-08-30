@@ -1,12 +1,26 @@
+import Image from 'next/image'
 import type { ReactNode } from 'react'
 import { GITHUB_URL, NPM_URL } from '@/lib/site'
+
+function BrandMark({ size = 28 }: { size?: number }) {
+  return (
+    <Image
+      src="/logo.jpg"
+      alt=""
+      width={size}
+      height={size}
+      className="logo-img"
+      priority
+    />
+  )
+}
 
 export function SiteNav() {
   return (
     <header className="site-header">
       <a className="logo-mark" href="/" aria-label="Bundle Cop home">
-        <span className="logo-dot" aria-hidden />
-        Bundle Cop
+        <BrandMark />
+        <span>Bundle Cop</span>
       </a>
       <nav className="nav" aria-label="Primary">
         <a href="/docs">Docs</a>
@@ -25,8 +39,8 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div className="site-footer-brand">
         <span className="logo-mark footer-mark">
-          <span className="logo-dot" aria-hidden />
-          Bundle Cop
+          <BrandMark size={24} />
+          <span>Bundle Cop</span>
         </span>
         <p>Prevent silent bundle growth on Next.js + Vercel.</p>
       </div>

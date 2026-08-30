@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { SiteShell } from '@/components/SiteChrome'
 import { GITHUB_URL, NPM_URL } from '@/lib/site'
 
@@ -45,7 +46,17 @@ export default function HomePage() {
     <SiteShell landing>
       <section className="hero">
         <div className="hero-copy anim-rise">
-          <p className="brand-kicker">Bundle Cop</p>
+          <p className="brand-kicker">
+            <Image
+              src="/logo.jpg"
+              alt=""
+              width={44}
+              height={44}
+              className="logo-img brand-kicker-logo"
+              priority
+            />
+            Bundle Cop
+          </p>
           <h1 className="hero-title">
             Catch bundle regressions before they ship.
           </h1>
