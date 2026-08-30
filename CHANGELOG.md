@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Website documentation at `/docs`, Privacy Policy at `/privacy`, and EULA at `/eula`
+- Shared site nav/footer with GitHub and npm links
+- Vercel project linked to GitHub for production auto-deploy on `main`
+
+### Removed
+
+- Internal `Bundle-Cop-Plan.md` from the public repository
+
 ## [0.1.1] - 2026-08-30
 
 ### Added

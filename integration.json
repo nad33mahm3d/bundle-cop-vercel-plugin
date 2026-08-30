@@ -2,7 +2,10 @@
   "slug": "bundle-cop",
   "name": "Bundle Cop",
   "description": "Prevent bundle regressions. Attribute cost to files and enforce budgets.",
-  "supportEmail": "support@bundle-cop.dev",
+  "supportEmail": "ebox.nadeem@gmail.com",
+  "docsUrl": "https://bundle-cop.vercel.app/docs",
+  "privacyPolicyUrl": "https://bundle-cop.vercel.app/privacy",
+  "eulaUrl": "https://bundle-cop.vercel.app/eula",
   "scopes": [
     "deployment",
     "deployment-check",

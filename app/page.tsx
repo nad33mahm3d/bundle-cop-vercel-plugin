@@ -1,10 +1,8 @@
+import { SiteShell } from '@/components/SiteChrome'
+
 export default function HomePage() {
   return (
-    <main>
-      <p className="nav">
-        <a href="/setup">Setup</a>
-        <a href="/dashboard">Dashboard</a>
-      </p>
+    <SiteShell>
       <h1 className="brand">Bundle Cop</h1>
       <p className="lead">
         Catch Next.js bundle regressions before they hit production. Attribute
@@ -12,16 +10,19 @@ export default function HomePage() {
         deployment.
       </p>
       <div className="cta-row">
-        <a className="btn btn-primary" href="/setup">
+        <a className="btn btn-primary" href="/docs">
+          Read the docs
+        </a>
+        <a className="btn" href="/setup">
           Get started
         </a>
         <a
           className="btn"
-          href="https://github.com"
+          href="https://github.com/nad33mahm3d/bundle-cop-vercel-plugin"
           target="_blank"
           rel="noreferrer"
         >
-          View docs
+          GitHub
         </a>
       </div>
       <section className="panel">
@@ -32,6 +33,23 @@ export default function HomePage() {
           replacement suggestion.
         </p>
       </section>
-    </main>
+      <section className="panel">
+        <h2>What you get</h2>
+        <ul className="doc-list">
+          <li>
+            <strong>Attribution</strong> — e.g. <code>moment</code> imported by{' '}
+            <code>app/page.tsx</code>
+          </li>
+          <li>
+            <strong>Budgets</strong> — warn or fail the build from{' '}
+            <code>bundle-cop.config.json</code>
+          </li>
+          <li>
+            <strong>Deployment reports</strong> — webhook + Checks on every
+            ship
+          </li>
+        </ul>
+      </section>
+    </SiteShell>
   )
 }

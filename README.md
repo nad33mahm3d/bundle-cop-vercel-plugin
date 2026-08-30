@@ -9,9 +9,12 @@ Prevent Next.js bundle regressions on Vercel. Attribute cost to the importing fi
 
 | Resource | Link |
 |----------|------|
+| **Docs (website)** | [bundle-cop.vercel.app/docs](https://bundle-cop.vercel.app/docs) |
 | **GitHub** | [nad33mahm3d/bundle-cop-vercel-plugin](https://github.com/nad33mahm3d/bundle-cop-vercel-plugin) |
 | **npm** | [bundle-cop-vercel-plugin](https://www.npmjs.com/package/bundle-cop-vercel-plugin) |
-| **Live integration app** | [bundle-cop.vercel.app](https://bundle-cop.vercel.app) |
+| **Live app** | [bundle-cop.vercel.app](https://bundle-cop.vercel.app) |
+| **Privacy** | [Privacy Policy](https://bundle-cop.vercel.app/privacy) |
+| **EULA** | [EULA](https://bundle-cop.vercel.app/eula) |
 | **Changelog** | [CHANGELOG.md](./CHANGELOG.md) |
 | **Issues** | [GitHub Issues](https://github.com/nad33mahm3d/bundle-cop-vercel-plugin/issues) |
 | **Releases** | [GitHub Releases](https://github.com/nad33mahm3d/bundle-cop-vercel-plugin/releases) |
@@ -28,16 +31,20 @@ Bundles grow silently — teams add `moment`, `lodash`, or heavy charts and only
 | Repo root | Integration app | Setup UI, dashboard, Vercel webhooks + Checks |
 | [`example`](./example) | Demo Next app | Imports `moment` to verify attribution |
 
-## Quick start (adapter)
+## Docs
 
-Requires **Next.js 16+**.
+Full product docs live on the website (not only in this README):
+
+**[https://bundle-cop.vercel.app/docs](https://bundle-cop.vercel.app/docs)**
+
+Quick install:
 
 ```bash
 pnpm add bundle-cop-vercel-plugin
 ```
 
 ```ts
-// next.config.ts
+// next.config.ts — Next.js 16+
 import type { NextConfig } from 'next'
 import { createRequire } from 'node:module'
 
@@ -50,63 +57,22 @@ const nextConfig: NextConfig = {
 export default nextConfig
 ```
 
-Optional budgets — copy [`bundle-cop.config.example.json`](./bundle-cop.config.example.json) to `bundle-cop.config.json`:
+Optional budgets: copy [`bundle-cop.config.example.json`](./bundle-cop.config.example.json) → `bundle-cop.config.json`.
 
-```json
-{
-  "budgets": [
-    { "path": "/*", "maxSize": "250kb", "enforce": "warn" }
-  ],
-  "suggestions": true
-}
-```
-
-After `next build`, inspect `bundle-report.json` in the project root.
-
-### Prove it locally
+### Local monorepo
 
 ```bash
 pnpm install
 pnpm build:plugin
 pnpm --filter @bundle-cop/example build
-# → example/bundle-report.json (moment attributed to app/page.tsx)
+pnpm dev   # integration app
 ```
 
-## Integration app
+### Hosting
 
-Hosted at [bundle-cop.vercel.app](https://bundle-cop.vercel.app) (Vercel team **NadeemAhmedPersonal**).
-
-```bash
-pnpm install
-pnpm build:plugin
-pnpm dev
-```
-
-| Route | Purpose |
-|-------|---------|
-| `/` | Product landing |
-| `/setup` | Default budgets / fail-on-over-budget guidance |
-| `/dashboard` | Bundle history chart (private Blob reports) |
-| `POST /api/webhooks/vercel` | Deployment webhook → Checks (+ optional GitHub) |
-| `GET /api/reports/[sha]` | Fetch a report by commit SHA |
-
-### Environment
-
-Copy [`.env.example`](./.env.example) → `.env.local` (or `vercel env pull`):
-
-| Variable | Required | Purpose |
-|----------|----------|---------|
-| `BLOB_READ_WRITE_TOKEN` | For Blob upload / dashboard | Private Blob read/write |
-| `VERCEL_WEBHOOK_SECRET` | For webhooks | Verify Vercel webhook signatures |
-| `VERCEL_TOKEN` | For Checks / prod diffs | Deployments + Checks API |
-| `GITHUB_APP_ID` / `GITHUB_APP_PRIVATE_KEY` / `GITHUB_APP_INSTALLATION_ID` | Optional | GitHub Check Runs |
-| `GITHUB_REPOSITORY` | Optional | `owner/repo` for Check Runs |
-
-### Hosting bootstrap (already done for the public demo)
-
-- Project: `nadeem-ahmeds-projects-9ef48543/bundle-cop`
-- Private Blob store: `bundle-cop-reports`
-- Webhook: `deployment.succeeded` → `/api/webhooks/vercel`
+- App: [bundle-cop.vercel.app](https://bundle-cop.vercel.app)
+- Team / project: `nadeem-ahmeds-projects-9ef48543` / `bundle-cop`
+- Connected to this GitHub repo for production auto-deploy on `main`
 
 ## Publishing to npm
 
@@ -127,11 +93,12 @@ npm metadata (`repository`, `bugs`, `homepage`, `license`) points at this GitHub
 
 ## Marketplace (Phase C — pending)
 
-Draft scopes and hooks live in [`integration.json`](./integration.json). Next step: create a **Connectable Account Integration** in the Vercel Integrations Console using:
+Draft scopes and hooks live in [`integration.json`](./integration.json). Console URLs:
 
-- Redirect URL: `https://bundle-cop.vercel.app/setup`
-- Webhook URL: `https://bundle-cop.vercel.app/api/webhooks/vercel`
-- Configuration URL: `https://bundle-cop.vercel.app/dashboard`
+- Redirect: `https://bundle-cop.vercel.app/setup`
+- Webhook: `https://bundle-cop.vercel.app/api/webhooks/vercel`
+- Configuration: `https://bundle-cop.vercel.app/dashboard`
+- Docs / Privacy / EULA: `/docs`, `/privacy`, `/eula` on the same host
 
 ## Development
 

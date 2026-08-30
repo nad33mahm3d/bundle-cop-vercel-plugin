@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { SiteShell } from '@/components/SiteChrome'
 
 export default function SetupPage() {
   const [defaultBudget, setDefaultBudget] = useState('250')
@@ -14,17 +15,12 @@ export default function SetupPage() {
   }
 
   return (
-    <main>
-      <p className="nav">
-        <a href="/">Home</a>
-        <a href="/dashboard">Dashboard</a>
-      </p>
-      <h1 className="brand" style={{ fontSize: '2.5rem' }}>
-        Setup
-      </h1>
+    <SiteShell>
+      <h1 className="brand page-title">Setup</h1>
       <p className="lead">
         Configure default budgets for new projects. Values are written into{' '}
-        <code>bundle-cop.config.json</code> guidance shown during install.
+        <code>bundle-cop.config.json</code> guidance shown during install. Full
+        install steps are in the <a href="/docs">docs</a>.
       </p>
 
       <form onSubmit={onSave} className="panel">
@@ -66,20 +62,12 @@ export default function SetupPage() {
           <p style={{ marginTop: '1rem', color: 'var(--accent)' }}>
             Defaults saved for this session. Add{' '}
             <code>bundle-cop-vercel-plugin</code> via{' '}
-            <code>adapterPath</code> in next.config, then deploy.
+            <code>adapterPath</code> in next.config, then deploy. See{' '}
+            <a href="/docs#install">docs → Install</a>.
           </p>
         ) : null}
 
-        <pre
-          style={{
-            marginTop: '1.5rem',
-            padding: '1rem',
-            overflow: 'auto',
-            background: '#0f0f0f',
-            border: '1px solid var(--border)',
-            fontSize: '0.8rem',
-          }}
-        >{`{
+        <pre className="code-block">{`{
   "budgets": [
     {
       "path": "/*",
@@ -91,6 +79,6 @@ export default function SetupPage() {
   "suggestions": true
 }`}</pre>
       </form>
-    </main>
+    </SiteShell>
   )
 }

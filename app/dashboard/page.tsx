@@ -1,4 +1,5 @@
 import { BundleHistoryChart } from '@/components/BundleHistoryChart'
+import { SiteShell } from '@/components/SiteChrome'
 import { listRecentReports } from '@/lib/reports'
 
 export const dynamic = 'force-dynamic'
@@ -7,14 +8,8 @@ export default async function DashboardPage() {
   const points = await listRecentReports(30)
 
   return (
-    <main>
-      <p className="nav">
-        <a href="/">Home</a>
-        <a href="/setup">Setup</a>
-      </p>
-      <h1 className="brand" style={{ fontSize: '2.5rem' }}>
-        Dashboard
-      </h1>
+    <SiteShell>
+      <h1 className="brand page-title">Dashboard</h1>
       <p className="lead">
         Bundle size across recent deployments (from private Blob reports).
       </p>
@@ -23,7 +18,8 @@ export default async function DashboardPage() {
         {points.length === 0 ? (
           <p>
             No reports yet. Run a build with the Bundle Cop adapter and ensure{' '}
-            <code>BLOB_READ_WRITE_TOKEN</code> is set.
+            <code>BLOB_READ_WRITE_TOKEN</code> is set. See{' '}
+            <a href="/docs#env">docs → Environment</a>.
           </p>
         ) : (
           <div className="chart-wrap">
@@ -31,6 +27,6 @@ export default async function DashboardPage() {
           </div>
         )}
       </section>
-    </main>
+    </SiteShell>
   )
 }
