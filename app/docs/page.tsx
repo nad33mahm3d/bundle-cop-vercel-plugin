@@ -2,9 +2,10 @@ import type { Metadata } from 'next'
 import { SiteShell } from '@/components/SiteChrome'
 
 export const metadata: Metadata = {
-  title: 'Docs · Bundle Cop',
+  title: 'Docs',
   description:
     'Install Bundle Cop, configure budgets, and wire the Vercel integration.',
+  alternates: { canonical: '/docs' },
 }
 
 export default function DocsPage() {

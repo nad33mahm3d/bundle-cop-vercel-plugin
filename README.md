@@ -10,6 +10,8 @@ Prevent Next.js bundle regressions on Vercel. Attribute cost to the importing fi
 | Resource | Link |
 |----------|------|
 | **Docs (website)** | [bundle-cop.vercel.app/docs](https://bundle-cop.vercel.app/docs) |
+| **llms.txt** | [bundle-cop.vercel.app/llms.txt](https://bundle-cop.vercel.app/llms.txt) |
+| **Sitemap** | [bundle-cop.vercel.app/sitemap.xml](https://bundle-cop.vercel.app/sitemap.xml) |
 | **GitHub** | [nad33mahm3d/bundle-cop-vercel-plugin](https://github.com/nad33mahm3d/bundle-cop-vercel-plugin) |
 | **npm** | [bundle-cop-vercel-plugin](https://www.npmjs.com/package/bundle-cop-vercel-plugin) |
 | **Live app** | [bundle-cop.vercel.app](https://bundle-cop.vercel.app) |

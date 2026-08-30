@@ -2,8 +2,9 @@ import type { Metadata } from 'next'
 import { SiteShell } from '@/components/SiteChrome'
 
 export const metadata: Metadata = {
-  title: 'EULA · Bundle Cop',
+  title: 'EULA',
   description: 'End User License Agreement for Bundle Cop.',
+  alternates: { canonical: '/eula' },
 }
 
 export default function EulaPage() {

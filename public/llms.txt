@@ -1,0 +1,34 @@
+# Bundle Cop
+
+> Catch Next.js bundle regressions before they hit production. Attribute cost to the importing file, enforce budgets, and report on every Vercel deployment.
+
+## Site
+
+- Home: https://bundle-cop.vercel.app/
+- Docs: https://bundle-cop.vercel.app/docs
+- Setup: https://bundle-cop.vercel.app/setup
+- Dashboard: https://bundle-cop.vercel.app/dashboard
+- Privacy: https://bundle-cop.vercel.app/privacy
+- EULA: https://bundle-cop.vercel.app/eula
+- Sitemap: https://bundle-cop.vercel.app/sitemap.xml
+
+## Product
+
+Bundle Cop is a Next.js 16+ adapter (`bundle-cop-vercel-plugin`) plus a Vercel integration app.
+
+- npm: https://www.npmjs.com/package/bundle-cop-vercel-plugin
+- Source: https://github.com/nad33mahm3d/bundle-cop-vercel-plugin
+- License: MIT
+
+## Install (adapter)
+
+```bash
+pnpm add bundle-cop-vercel-plugin
+```
+
+In `next.config.ts` set `adapterPath` to `bundle-cop-vercel-plugin/adapter` via `require.resolve`. Optional budgets live in `bundle-cop.config.json`.
+
+## Optional
+
+- Full prose docs for humans: /docs
+- llms-full.txt: /llms-full.txt

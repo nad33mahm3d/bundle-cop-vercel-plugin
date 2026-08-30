@@ -1,36 +1,60 @@
 import type { ReactNode } from 'react'
-
-const GITHUB =
-  'https://github.com/nad33mahm3d/bundle-cop-vercel-plugin'
-const NPM = 'https://www.npmjs.com/package/bundle-cop-vercel-plugin'
+import { GITHUB_URL, NPM_URL } from '@/lib/site'
 
 export function SiteNav() {
   return (
-    <p className="nav">
-      <a href="/">Home</a>
-      <a href="/docs">Docs</a>
-      <a href="/setup">Setup</a>
-      <a href="/dashboard">Dashboard</a>
-      <a href={GITHUB} target="_blank" rel="noreferrer">
-        GitHub
+    <header className="site-header">
+      <a className="logo-mark" href="/" aria-label="Bundle Cop home">
+        <span className="logo-dot" aria-hidden />
+        Bundle Cop
       </a>
-    </p>
+      <nav className="nav" aria-label="Primary">
+        <a href="/docs">Docs</a>
+        <a href="/setup">Setup</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href={GITHUB_URL} target="_blank" rel="noreferrer">
+          GitHub
+        </a>
+      </nav>
+    </header>
   )
 }
 
 export function SiteFooter() {
   return (
     <footer className="site-footer">
-      <div className="site-footer-links">
-        <a href="/docs">Docs</a>
-        <a href="/privacy">Privacy</a>
-        <a href="/eula">EULA</a>
-        <a href={GITHUB} target="_blank" rel="noreferrer">
-          GitHub
-        </a>
-        <a href={NPM} target="_blank" rel="noreferrer">
-          npm
-        </a>
+      <div className="site-footer-brand">
+        <span className="logo-mark footer-mark">
+          <span className="logo-dot" aria-hidden />
+          Bundle Cop
+        </span>
+        <p>Prevent silent bundle growth on Next.js + Vercel.</p>
+      </div>
+      <div className="site-footer-cols">
+        <div>
+          <h3>Product</h3>
+          <a href="/docs">Docs</a>
+          <a href="/setup">Setup</a>
+          <a href="/dashboard">Dashboard</a>
+        </div>
+        <div>
+          <h3>Legal</h3>
+          <a href="/privacy">Privacy</a>
+          <a href="/eula">EULA</a>
+          <a href="/llms.txt">llms.txt</a>
+        </div>
+        <div>
+          <h3>Open source</h3>
+          <a href={GITHUB_URL} target="_blank" rel="noreferrer">
+            GitHub
+          </a>
+          <a href={NPM_URL} target="_blank" rel="noreferrer">
+            npm
+          </a>
+          <a href={`${GITHUB_URL}/releases`} target="_blank" rel="noreferrer">
+            Releases
+          </a>
+        </div>
       </div>
       <p className="site-footer-meta">
         © {new Date().getFullYear()} Bundle Cop · MIT License
@@ -42,15 +66,17 @@ export function SiteFooter() {
 export function SiteShell({
   children,
   wide,
+  landing,
 }: {
   children: ReactNode
   wide?: boolean
+  landing?: boolean
 }) {
   return (
-    <main className={wide ? 'main-wide' : undefined}>
+    <div className={landing ? 'page-shell landing' : 'page-shell'}>
       <SiteNav />
-      {children}
+      <main className={wide ? 'main-wide' : undefined}>{children}</main>
       <SiteFooter />
-    </main>
+    </div>
   )
 }

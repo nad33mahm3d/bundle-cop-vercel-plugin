@@ -2,8 +2,9 @@ import type { Metadata } from 'next'
 import { SiteShell } from '@/components/SiteChrome'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy · Bundle Cop',
+  title: 'Privacy Policy',
   description: 'How Bundle Cop handles data for the integration and adapter.',
+  alternates: { canonical: '/privacy' },
 }
 
 export default function PrivacyPage() {

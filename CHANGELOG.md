@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Website documentation at `/docs`, Privacy Policy at `/privacy`, and EULA at `/eula`
 - Shared site nav/footer with GitHub and npm links
 - Vercel project linked to GitHub for production auto-deploy on `main`
+- SEO: `sitemap.xml`, `robots.txt`, `llms.txt`, `llms-full.txt`, Open Graph image, web manifest, JSON-LD
+- Redesigned landing with brand-first hero, report visual, and motion
 
 ### Removed
 

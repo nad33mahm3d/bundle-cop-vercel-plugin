@@ -1,0 +1,29 @@
+# Bundle Cop — full context for LLMs
+
+Website: https://bundle-cop.vercel.app
+Docs: https://bundle-cop.vercel.app/docs
+npm: https://www.npmjs.com/package/bundle-cop-vercel-plugin
+GitHub: https://github.com/nad33mahm3d/bundle-cop-vercel-plugin
+
+## What it does
+
+1. During `next build`, the adapter parses Next.js build output / manifests.
+2. It attributes large modules to the importing user file (e.g. moment → app/page.tsx).
+3. Optional budgets in bundle-cop.config.json can warn or fail the build.
+4. Reports can upload to private Vercel Blob; the integration webhook diffs vs production and can post Checks.
+
+## Package name
+
+`bundle-cop-vercel-plugin` (unscoped). Peer: Next.js >= 16.
+
+## Integration URLs
+
+- Redirect / setup: https://bundle-cop.vercel.app/setup
+- Dashboard: https://bundle-cop.vercel.app/dashboard
+- Webhook: https://bundle-cop.vercel.app/api/webhooks/vercel
+- Privacy: https://bundle-cop.vercel.app/privacy
+- EULA: https://bundle-cop.vercel.app/eula
+
+## Support
+
+ebox.nadeem@gmail.com · GitHub Issues on the repository above.
