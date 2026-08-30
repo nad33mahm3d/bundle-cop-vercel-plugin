@@ -36,9 +36,6 @@ export default function DocsPage() {
             <a href="#env">Environment variables</a>
           </li>
           <li>
-            <a href="#search-console">Google Search Console</a>
-          </li>
-          <li>
             <a href="#publish">Publishing</a>
           </li>
           <li>
@@ -259,45 +256,6 @@ pnpm --filter @bundle-cop/example build
             </tr>
           </tbody>
         </table>
-      </section>
-
-      <section id="search-console" className="panel doc-section">
-        <h2>Google Search Console</h2>
-        <p>
-          To help Google index Bundle Cop for queries like “optimize Next.js on
-          Vercel”:
-        </p>
-        <ol className="doc-list">
-          <li>
-            Open{' '}
-            <a
-              href="https://search.google.com/search-console"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Google Search Console
-            </a>{' '}
-            and add property{' '}
-            <code>https://bundle-cop.vercel.app</code> (URL prefix).
-          </li>
-          <li>
-            Verify ownership (HTML tag in <code>app/layout.tsx</code>, DNS, or
-            Vercel domain verification — whichever you prefer).
-          </li>
-          <li>
-            Submit the sitemap:{' '}
-            <a href="https://bundle-cop.vercel.app/sitemap.xml">
-              https://bundle-cop.vercel.app/sitemap.xml
-            </a>
-          </li>
-          <li>
-            Optionally request indexing for{' '}
-            <a href="/guides/optimize-nextjs-bundle-vercel">
-              /guides/optimize-nextjs-bundle-vercel
-            </a>{' '}
-            and <a href="/docs">/docs</a>.
-          </li>
-        </ol>
       </section>
 
       <section id="publish" className="panel doc-section">

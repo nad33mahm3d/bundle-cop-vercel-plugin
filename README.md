@@ -88,12 +88,6 @@ Package name: **`bundle-cop-vercel-plugin`**
 
 **Current npm:** [`bundle-cop-vercel-plugin@0.1.3`](https://www.npmjs.com/package/bundle-cop-vercel-plugin) (homepage → website docs)
 
-### Google Search Console
-
-1. Add property `https://bundle-cop.vercel.app` in [Search Console](https://search.google.com/search-console)
-2. Verify ownership
-3. Submit sitemap: `https://bundle-cop.vercel.app/sitemap.xml`
-
 ### `VERCEL_TOKEN` fallback (optional)
 
 For Checks when no OAuth install token is stored:
