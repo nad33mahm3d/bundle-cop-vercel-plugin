@@ -1,0 +1,54 @@
+name: Bug report
+description: Something is broken in the adapter or integration app
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      description: Where does the bug show up?
+      options:
+        - Adapter (bundle-cop-vercel-plugin)
+        - Integration app (bundle-cop.vercel.app)
+        - Example app
+        - Docs / website
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: package_version
+    attributes:
+      label: Package version
+      description: e.g. bundle-cop-vercel-plugin@0.1.3 (or N/A)
+      placeholder: 0.1.3
+  - type: input
+    id: next_version
+    attributes:
+      label: Next.js version
+      description: Required for adapter bugs
+      placeholder: 16.x
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What happened vs what you expected?
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Reproduction
+      description: Minimal steps or a link to a small repo
+      placeholder: |
+        1. pnpm add bundle-cop-vercel-plugin
+        2. Set adapterPath in next.config.ts
+        3. …
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / bundle-report.json excerpt
+      description: Redact secrets. Paste relevant build or webhook output.
+      render: shell

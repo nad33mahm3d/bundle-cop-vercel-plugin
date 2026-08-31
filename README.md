@@ -123,6 +123,12 @@ pnpm --filter @bundle-cop/example build
 
 Monorepo: pnpm workspaces (`packages/*`, `example`).
 
+## Community
+
+- [Contributing](./CONTRIBUTING.md)
+- [Code of Conduct](./CODE_OF_CONDUCT.md)
+- [Security policy](./.github/SECURITY.md)
+
 ## License
 
 [MIT](./LICENSE)

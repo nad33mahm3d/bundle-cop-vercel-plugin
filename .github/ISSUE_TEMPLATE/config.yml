@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Documentation
+    url: https://bundle-cop.vercel.app/docs
+    about: Install, budgets, env vars, and integration setup
+  - name: Optimization guide
+    url: https://bundle-cop.vercel.app/guides/optimize-nextjs-bundle-vercel
+    about: How Bundle Cop fits Next.js / Vercel bundle optimization
+  - name: Security vulnerability
+    url: https://github.com/nad33mahm3d/bundle-cop-vercel-plugin/security/policy
+    about: Report security issues privately (do not open a public issue)
