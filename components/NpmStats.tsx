@@ -44,7 +44,8 @@ export async function NpmStats() {
         <a href={NPM_URL} target="_blank" rel="noreferrer">
           npm registry
         </a>
-        , refreshed hourly.
+        , refreshed every 30 minutes. Rolling windows (not npm’s lagged
+        last-week alias).
       </p>
     </section>
   )
