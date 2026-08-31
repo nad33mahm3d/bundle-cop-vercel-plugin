@@ -1,3 +1,4 @@
+import { NpmStats } from '@/components/NpmStats'
 import { SiteShell } from '@/components/SiteChrome'
 import { FAQ_ITEMS, GITHUB_URL, NPM_URL } from '@/lib/site'
 
@@ -44,7 +45,7 @@ function ReportVisual() {
   )
 }
 
-export default function HomePage() {
+export default async function HomePage() {
   return (
     <SiteShell landing>
       <section className="hero">
@@ -75,6 +76,8 @@ export default function HomePage() {
       <section className="hero-stage">
         <ReportVisual />
       </section>
+
+      <NpmStats />
 
       <section className="section">
         <div className="section-head">

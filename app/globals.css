@@ -234,6 +234,83 @@ main.main-wide {
   max-width: 760px;
 }
 
+.npm-stats {
+  margin: 0 auto 3.5rem;
+  max-width: 760px;
+  padding: 1.25rem 0 0;
+  border-top: 1px solid var(--border);
+}
+
+.npm-stats-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem 2rem;
+}
+
+.npm-stats-package {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.npm-stats-package span {
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.npm-stats-package:hover {
+  opacity: 0.85;
+}
+
+.npm-stats-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 2rem;
+  margin: 0;
+}
+
+.npm-stats-grid div {
+  min-width: 4.5rem;
+}
+
+.npm-stats-grid dt {
+  margin: 0 0 0.2rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.npm-stats-grid dd {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 650;
+  letter-spacing: -0.03em;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+}
+
+.npm-stats-note {
+  margin: 0.85rem 0 0;
+  color: var(--muted-2);
+  font-size: 0.75rem;
+}
+
+.npm-stats-note a {
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.npm-stats-note a:hover {
+  color: #fff;
+}
+
 /* Report visual */
 .report-visual {
   border: 1px solid var(--border);
